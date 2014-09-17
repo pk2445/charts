@@ -1,0 +1,125 @@
+
+
+html, body {
+    background-color: white;
+    font-family: Helvetica, sans-serif;
+    margin: 0px;
+    padding: 30px;
+    height: 100%;
+    width: 70%;
+
+}
+
+
+h1 {
+    color: #2361a1;
+    text-align: left;
+    font-size: 20px;
+}
+
+
+ .yAxis {
+ 	
+    font-size: 65pt;
+ 	
+ }
+.content{
+    width: 960px;
+    margin: 0 auto;
+	margin-top: 0px;
+    
+}
+#main-container{
+  margin:0;
+  border-top: 1px solid;
+}
+
+#menu1{
+	color: 
+#2361a1;
+	
+}
+select#menu1{
+	height: 20px;
+	width: auto;
+}
+
+.tooltip{
+	height: auto;
+}
+.container {
+    padding-left: 95px;
+    padding-right: 0px;
+    max-width: 500px;
+    border-top: 0px solid;
+}
+.highcharts-container{
+    border-right: px solid;
+}
+
+.row {
+    margin-bottom: 20px;
+   }
+
+ .content1{
+     padding-left: 10px;
+    padding-right: 5px;
+  }
+   
+@media screen {
+    p {
+        font-size: 14px;
+    }
+    
+div {
+   
+    }    
+} 
+
+
+@media only screen and (max-width : 480px){
+.content{
+    width: 98%;
+}
+#big-container{
+    width: 98%;
+    border-bottom: 1px solid;
+    border-right: 0px;
+}
+
+#text-container{  
+    width: 100%;
+    margin-top: 10px;
+    padding-top:10px;
+}
+
+}
+
+@media only screen and (min-width : 480px) and (max-width : 768px){
+.content{
+    width: 90%;
+}
+#big-container{
+    width: 65%;
+}
+
+#text-container{  
+    width: 34%;
+}
+
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px){
+.content{
+    width: 90%;
+}
+#big-container{
+    width: 75%;
+}
+
+#text-container{  
+    width: 24%;
+}
+
+}
+

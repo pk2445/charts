@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+
+</div>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Stock Market</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+
+function getTimes(numTimes, interval) {
+ 
+    var ms = (new Date(2014, 07, 22, 12, 00)).getTime();
+    var times = [];
+    var startDate = new Date(ms);
+    times.push(startDate.getHours() + ":" + startDate.getMinutes());
+    
+    for (var i = 1; i< numTimes; i++)
+    {
+        ms += interval;
+        var nextTime = (new Date()).setTime(ms);
+        var nextDate = new Date(nextTime);
+        times.push(nextDate.getHours() + ":" + pad(nextDate.getMinutes(), 2));
+    }
+    
+    return times;
+    
+}
+
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+var interval = 15*60*1000
+var data = [1023.97, 1050.41, 1037.44, 1034.23, 1037.44, 1034.23, 1033.83, 1035.39, 1036.13, 1035.33, 1034.89, 1037.27, 1037.53];
+var timeCategories = getTimes(data.length, interval); 
+
+$(function () {
+    var chart;
+    $(document).ready(function() {
+
+        chart = new Highcharts.Chart({
+        	
+          exporting: {
+        		enabled: false
+        	},
+        	
+        	credits: {
+                	enabled: false
+                	},
+           
+            chart: {
+                renderTo: 'container',
+                zoomType: 'x',
+                spacingRight: 20
+            },
+            title: {
+                text: 'सेयर बजार',
+                style: {
+            	fontSize: '25px',
+                fontWeight: 'bold',
+                color: '#2361a1'
+            },
+            },
+            xAxis: {
+                categories: timeCategories,
+                title: {
+                    text: null
+                },
+                startOnTick: false
+            },
+            yAxis: {
+                title: {
+                    text: 'नेप्से परिसूचक'
+                },
+                startOnTick: false,
+                showFirstLabel: true
+            },
+            
+           tooltip: {
+            	shared: true,
+            	crosshairs: [{
+            		color: 'green',
+            		width: 2,
+            	
+            	},true,]
+            },
+            
+     legend: {
+                enabled: false	
+            },
+            
+            series: [{
+                type: 'line',
+                name: 'NEPSE Index',
+                data: [
+                    1023.97, 1050.41, 1037.44, 1034.23, 1037.44, 1034.23, 1033.83, 1035.39, 1036.13, 1035.33, 1034.89, 1037.27, 1037.53
+                ]
+            }]
+        });
+        
+               $( "#menu1" )
+  .change(function () {
+    var str = $(this).val();
+
+    changeSeries(str);
+  })
+  .change();
+
+  function changeSeries(str){
+    if (str == "july27"){
+        chart.series[0].update({
+                    
+               
+                data: [
+                    1025.69, 1025.42, 1025.99, 1031.38, 1036.92, 1036.92, 1038.47, 1037.7, 1035.57, 1034, 1033.03, 1030.69, 1035.81
+                ]
+           
+                });
+    }
+    else if (str == "भाद्र२"){
+        chart.series[0].update({
+                    
+                name: 'NEPSE Index',
+                data: [
+                    1034.47, 1034.13, 1033.01, 1031.04,	1026.47, 1023.76, 1022.59, 1019.85, 1018.27, 1014.95, 1014.25, 1013.95, 1013.51
+                ]
+           
+                });
+    }
+    else if (str == "भाद्र३"){
+        chart.series[0].update({
+                    
+                name:'NEPSE Index',
+                data: [
+                    1013.25, 1010.56, 1019.73, 1021.32, 1019.71, 1021.31, 1018.77, 1018.07, 1016.88, 1014.87, 1012.8, 1013.66, 1013.68
+                ]
+           
+                });
+    }
+
+    else if (str == "भाद्र४"){
+        chart.series[0].update({
+                    
+                name: 'NEPSE Index',
+                data: [
+                    1014.31, 1011.73, 1009.92, 1008.06, 1007.71, 1004.59, 1002.74, 1002.36, 1001.01, 999.5, 998.47, 997.03, 995.52
+                ]
+           
+                });
+   
+ }
+
+    else if (str == "भाद्र५"){
+        chart.series[0].update({
+                    
+                name: 'NEPSE Index',
+                data: [
+                    995.71, 978.64, 973.86, 972.46, 973.08, 976.45, 980.9, 987.24, 991.97, 994.14, 993.46, 993.51, 997.98
+                ]
+           
+                });
+                 }
+
+  
+    
+     else{
+        chart.series[0].update({
+                    
+                name: 'NEPSE Index',
+                data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+           
+                });
+    }
+  }
+    });
+    
+});
+	</script>
+	</head>
+	<body>
+		
+<div id="big-cotainer" style="width: 720px; height: 320px; border: 1px solid;">	
+<div id="select-menu" style="height: 20px; width: 150px; float: left">	
+				
+<select name ="menu1" id="menu1">
+<option value="भाद्र२">भाद्र २, सोमबार</option>
+
+<option value="भाद्र३">भाद्र ३, मंगलबार</option>
+<option value="भाद्४">भाद्र ४, बुधबार</option>
+<option value="भाद्र५">भाद्र ५, बिहिबार</option>
+
+</select>
+
+</div>
+<div id="text-container" style="width: 200px; height: 320px; float: right; border-left: 1px solid;">
+    <div class="content1">
+    <h1>
+बैंकले झार्‍यो नेप्से </h1>
+	<p> ओरालो लागेको छ। ठूलो संख्यामा ब्रोकरहरु 'आउट' भएकाले यस दिनको कारोबार रकम पनि अघिल्लो दिनहरुका तुलना कम छ। 
+	</p>
+  
+</div>
+</div>
+
+
+		<div id="indexSelectRange" class="btn-group pull-right">
+
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 500px; height: 300px; float: left; border-right-width: 0px;"> </div>
+<div id="second" style="width: 300px; height: 400px; margin:0"> </div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() { // this runs as soon as the page is ready (DOM is loaded)
+   $("second") // selecting "div" (you can also select the element by its id or class like in css )
+   .load("stock.html") // load in the file specified
+  });
+  
+  
+</script>
+
+	</body>
+</html>
+
